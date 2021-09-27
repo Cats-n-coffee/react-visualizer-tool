@@ -4,7 +4,7 @@ const DataContext = React.createContext();
 
 export default function DataProvider(props) {
     const [data, setData] = React.useState({});
-    return <DataContext.Provider values={data, setData} {...props}/>
+    return <DataContext.Provider value={data, setData} {...props}/>
 }
 
 export function useDataProvider() {
