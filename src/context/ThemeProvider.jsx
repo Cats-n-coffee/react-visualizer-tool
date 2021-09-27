@@ -3,9 +3,17 @@ import React from 'react';
 const ThemeContext = React.createContext();
 
 export default function ThemeProvider(props) {
-    const [theme, setTheme] = React.useState('light');
+    const [theme, setTheme] = React.useState(
+        () => window.localStorage.getItem('theme') || 'light'
+    );
 
-    return <ThemeContext.Provider value={theme, setTheme} {...props} />
+    useEffect(() => {
+        document.body.dataset.theme = theme;
+    }, [theme])
+
+    const values = {theme, setTheme}
+
+    return <ThemeContext.Provider value={values} {...props} />
 }
 
 export function useThemeProvider() {
