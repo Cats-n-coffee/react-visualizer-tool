@@ -1,10 +1,14 @@
+// eslint-disable-next-line
+import styles, { css } from 'styled-components/macro';
 import React from 'react';
 import ComponentPopup from './ComponentPopup';
+import ComponentTreeContainer from './ComponentTreeContainer';
+import { BodyStyles } from './styles/bodyStyles';
 
 export default function Body(props) {
     const { popup, setPopup } = props;
     return (
-        <main>
+        <main css={ BodyStyles }>
             this is the body component
             {
                 popup ? 
@@ -13,6 +17,7 @@ export default function Body(props) {
                 />
                 : null
             }
+            <ComponentTreeContainer />
         </main>
     )
 }

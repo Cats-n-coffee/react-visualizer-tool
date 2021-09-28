@@ -2,7 +2,7 @@
 import styled, { css } from 'styled-components/macro';
 import React from 'react';
 import { useDataProvider } from '../../context/DataProvider';
-import { Popup } from './styles/componentPopupStyles';
+import { PopupStyles } from './styles/componentPopupStyles';
 import PopupForm from './PopupForm';
 
 export default function ComponentPopup(props) {
@@ -21,7 +21,7 @@ export default function ComponentPopup(props) {
     }
 
     return (
-        <div css={ Popup }>
+        <div css={ PopupStyles }>
             <h2>Component Popup</h2>
             <button onClick={ () => setPopup(false) }>Close</button>
             <PopupForm handleSubmit={ handleSubmit }/>
