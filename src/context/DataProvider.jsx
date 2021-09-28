@@ -1,6 +1,7 @@
 import React from 'react';
 
 const DataContext = React.createContext();
+DataContext.displayName = 'DataContext';
 
 export default function DataProvider(props) {
     const [data, setData] = React.useState({});

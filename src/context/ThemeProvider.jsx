@@ -1,14 +1,16 @@
 import React from 'react';
 
 const ThemeContext = React.createContext();
+ThemeContext.displayName = 'ThemeContext';
 
 export default function ThemeProvider(props) {
     const [theme, setTheme] = React.useState(
         () => window.localStorage.getItem('theme') || 'light'
     );
 
-    useEffect(() => {
+    React.useEffect(() => {
         document.body.dataset.theme = theme;
+        window.localStorage.setItem('theme', theme)
     }, [theme])
 
     const values = {theme, setTheme}
