@@ -1,0 +1,38 @@
+import React from 'react';
+
+export default function PopupForm(props) {
+    const { handleSubmit } = props;
+    const [componentName, setComponentName] = React.useState('');
+    const [componentProps, setComponentProps] = React.useState('');
+    const [componentState, setComponentState] = React.useState('');
+
+    return (
+        <form onSubmit={ (e) => handleSubmit(e, { componentName, componentProps, componentState }) }>
+            <div>
+                <label htmlFor="component-name">Component Name</label>
+                <input 
+                    type="text"
+                    value={ componentName }
+                    onChange={ (e) => setComponentName(e.target.value)} 
+                />
+            </div>
+            <div>
+                <label htmlFor="component-props">Props</label>
+                <input 
+                    type="text" 
+                    value={ componentProps }
+                    onChange={ (e) => setComponentProps(e.target.value)}
+                />
+            </div>
+            <div>
+                <label htmlFor="component-state">State(s)</label>
+                <input 
+                    type="text" 
+                    value={ componentState } 
+                    onChange={ (e) => setComponentState(e.target.value) }
+                />
+            </div>
+            <button type="submit" >Add Component</button>
+        </form>
+    )
+}

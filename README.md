@@ -16,3 +16,6 @@ Under the hood it build a general tree and performs all the operations on it whe
 
 ## Filter the information to be displayed
 Set some filters to show/remove some information from the screen, allowing the user to see only what they need to see and improve readability.
+
+## Popup
+Popup have their open/close state managed inside the `App.js` component. Each popup takes the entire screen which disables any clicks outside of the popup.
