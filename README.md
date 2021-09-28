@@ -1,6 +1,6 @@
 # React Visualizer Tool
 
-This is a tool to help visualize or build a React project by creating a component tree.
+This is a tool to help visualize a component tree when designing or building a React Project.
 
 ## Using Context to share data
 The components added by the user will be stored in Context to be available across the app.

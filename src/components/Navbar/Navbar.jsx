@@ -10,7 +10,9 @@ export default function Navbar(props) {
         <nav>
             <ThemeToggle />
             <section aria-label="add buttons">
-                <NewComponentBtn />
+                <NewComponentBtn 
+                    setPopup={ props.setPopup }
+                />
                 <NewProjectBtn />
             </section>
             <section aria-label="filters">
