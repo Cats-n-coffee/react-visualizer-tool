@@ -6,7 +6,6 @@ import { SingleComponentStyled } from './styles/componentStyles';
 export default function SingleComponent(props) {
     const { component, setPopup, setType } = props;
     const [showOptions, setShowOptions] = React.useState(false);
-console.log('singlecomp', component)
 
     function handleAddClick() {
         setPopup(true);

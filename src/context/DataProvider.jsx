@@ -1,4 +1,5 @@
 import React from 'react';
+import { findNodeInTree } from '../helpers/findNodeInTree';
 
 const DataContext = React.createContext();
 DataContext.displayName = 'DataContext';
@@ -7,12 +8,12 @@ export default function DataProvider(props) {
     const [data, setData] = React.useState({});
 
     function insertComponent(component) {
-        const { componentName, componentProps, componentState } = component;
-        let newComponent = {};
-    
+        const { componentName, componentProps, componentState, parent } = component;
+        //let newComponent = {};
+    console.log('this is context')
         // State is empty, this is the first component we add
         if (Object.keys(data).length === 0) {
-            newComponent = {
+            let newComponent = {
                 root: {
                     name: componentName,
                     parent: null,
@@ -27,7 +28,22 @@ export default function DataProvider(props) {
         else {
             // we need to add the parent to this incoming child, lookup?
             // we need to update the parent's children with this incoming child
-            
+            console.log('adding a child')
+            let currentData = data.root;
+            console.log('currentData', currentData)
+            let newComponent = {
+                    name: componentName,
+                    parent,
+                    props: componentProps,
+                    state: componentState,
+                    children: []
+            }
+            // we need to loop throught the current tree to find the matching parent
+            // once found, we need to push the new node to the array of children of that parent node
+            // BFS to loop throught all the children
+            const newData = findNodeInTree(parent, newComponent, data.root);
+            //setData(newData)
+            console.log('now', data)
         }
     }
 

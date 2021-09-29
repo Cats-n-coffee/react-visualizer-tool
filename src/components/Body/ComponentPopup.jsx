@@ -11,10 +11,7 @@ export default function ComponentPopup(props) {
 
     function handleSubmit(event, newComponent) {
         event.preventDefault();
-        if (Object.keys(data).length === 0) {
-            console.log('data was empty')
-            insertComponent(newComponent)
-        }
+        insertComponent(newComponent)
         console.log('submitted', newComponent)
         
     }
@@ -27,3 +24,5 @@ export default function ComponentPopup(props) {
         </div>
     )
 }
+
+// https://stackoverflow.com/questions/28695348/pushing-item-into-a-multi-dimensional-tree-like-structure-in-javascript

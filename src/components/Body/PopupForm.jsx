@@ -5,9 +5,10 @@ export default function PopupForm(props) {
     const [componentName, setComponentName] = React.useState('');
     const [componentProps, setComponentProps] = React.useState('');
     const [componentState, setComponentState] = React.useState('');
+    const [componentParent, setComponentParent] = React.useState('');
 
     return (
-        <form onSubmit={ (e) => handleSubmit(e, { componentName, componentProps, componentState }) }>
+        <form onSubmit={ (e) => handleSubmit(e, { componentName, componentProps, componentState, parent: componentParent }) }>
             <h3>{type}</h3>
             <div>
                 <label htmlFor="component-name">Component Name</label>
@@ -35,7 +36,11 @@ export default function PopupForm(props) {
                 />
                 {/* add the ability to add multiple states, store in an array */}
             </div>
-            <button type="submit" >Add Component</button>
+            <div>
+                <label htmlFor="parent">Select Parent</label>
+                <input type="text" value={ componentParent} onChange={ (e) => setComponentParent(e.target.value) }/>
+            </div>
+            <button type="submit" >Add to Tree</button>
         </form>
     )
 }
