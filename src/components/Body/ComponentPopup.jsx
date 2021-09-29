@@ -11,7 +11,6 @@ export default function ComponentPopup(props) {
 
     function handleSubmit(event, newComponent) {
         event.preventDefault();
-        console.log('inner function', newComponent)
         if (Object.keys(data).length === 0) {
             console.log('data was empty')
             setData(newComponent)

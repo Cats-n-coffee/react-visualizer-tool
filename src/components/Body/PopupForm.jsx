@@ -23,6 +23,7 @@ export default function PopupForm(props) {
                     value={ componentProps }
                     onChange={ (e) => setComponentProps(e.target.value)}
                 />
+                {/* add the ability to add multiple props, store in an array */}
             </div>
             <div>
                 <label htmlFor="component-state">State(s)</label>
@@ -31,6 +32,7 @@ export default function PopupForm(props) {
                     value={ componentState } 
                     onChange={ (e) => setComponentState(e.target.value) }
                 />
+                {/* add the ability to add multiple states, store in an array */}
             </div>
             <button type="submit" >Add Component</button>
         </form>
