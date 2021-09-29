@@ -12,6 +12,7 @@ export default function Navbar(props) {
             <section aria-label="add buttons">
                 <NewComponentBtn 
                     setPopup={ props.setPopup }
+                    setType={ props.setType }
                 />
                 <NewProjectBtn />
             </section>

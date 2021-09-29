@@ -6,14 +6,14 @@ import { PopupStyles } from './styles/componentPopupStyles';
 import PopupForm from './PopupForm';
 
 export default function ComponentPopup(props) {
-    const { setPopup } = props;
-    const { data, setData } = useDataProvider();
+    const { setPopup, type } = props;
+    const { data, insertComponent } = useDataProvider();
 
     function handleSubmit(event, newComponent) {
         event.preventDefault();
         if (Object.keys(data).length === 0) {
             console.log('data was empty')
-            setData(newComponent)
+            insertComponent(newComponent)
         }
         console.log('submitted', newComponent)
         
@@ -23,7 +23,7 @@ export default function ComponentPopup(props) {
         <div css={ PopupStyles }>
             <h2>Component Popup</h2>
             <button onClick={ () => setPopup(false) }>Close</button>
-            <PopupForm handleSubmit={ handleSubmit }/>
+            <PopupForm handleSubmit={ handleSubmit } type={ type }/>
         </div>
     )
 }

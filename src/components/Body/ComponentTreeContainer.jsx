@@ -4,14 +4,20 @@ import SingleComponent from './SingleComponent';
 
 
 export default function ComponentTreeContainer(props) {
-    const { data } = useDataProvider()
+    const { data } = useDataProvider();
+    const { setPopup, setType } = props;
+    console.log(data)
 
     return (
         <div>
             this is the component tree container
             {
-                data ?
-                <SingleComponent component={ data } />
+                Object.keys(data).length > 0 ?
+                <SingleComponent 
+                    component={ data.root } 
+                    setPopup={ setPopup }
+                    setType={ setType }
+                />
                 : null
             }
         </div>

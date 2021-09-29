@@ -1,10 +1,15 @@
 import React from 'react';
 
-
 export default function NewComponentBtn(props) {
-    const { setPopup } = props;
+    const { setPopup, setType } = props;
+
+    function handleClick() {
+        setPopup(true);
+        setType("navbar-form")
+    }
+
     return (
-        <button onClick={ () => setPopup(true) }>Add Component</button>
+        <button onClick={ () => handleClick() }>Add Component</button>
     )
 }
 

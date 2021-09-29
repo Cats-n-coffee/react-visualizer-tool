@@ -6,6 +6,10 @@ This is a tool to help visualize a component tree when designing or building a R
 The components added by the user will be stored in Context to be available across the app.
 
 ## Allow to add parent/children
+If no components are added to the screen yet, the first one added will be the root by default (equivalent to index.js)
+Components can be added in different ways:
+- clicking on one element to add a child: it can be the first child, or one more child among some already there,
+- using the form in the sidebar
 
 ## Allow to add props
 

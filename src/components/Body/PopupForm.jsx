@@ -1,13 +1,14 @@
 import React from 'react';
 
 export default function PopupForm(props) {
-    const { handleSubmit } = props;
+    const { handleSubmit, type } = props;
     const [componentName, setComponentName] = React.useState('');
     const [componentProps, setComponentProps] = React.useState('');
     const [componentState, setComponentState] = React.useState('');
 
     return (
         <form onSubmit={ (e) => handleSubmit(e, { componentName, componentProps, componentState }) }>
+            <h3>{type}</h3>
             <div>
                 <label htmlFor="component-name">Component Name</label>
                 <input 
