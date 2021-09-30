@@ -2,6 +2,7 @@
 import styled, { css } from 'styled-components/macro';
 import React from 'react';
 import { SingleComponentStyled } from './styles/componentStyles';
+import ComponentTreeContainer from './ComponentTreeContainer';
 
 export default function SingleComponent(props) {
     const { component, setPopup, setType } = props;
@@ -22,6 +23,7 @@ export default function SingleComponent(props) {
             css={ SingleComponentStyled }
             onMouseEnter={ () => setShowOptions(true) }
             onMouseLeave={ () => setShowOptions(false) }
+            key={component.name}
         >
             <h3>{component.name}</h3>
             {
@@ -41,6 +43,9 @@ export default function SingleComponent(props) {
                     <button onClick={ () => handleEditClick() }>Edit Component</button>
                 </div>
                 : null
+            }
+            {
+                component.allChildren && <div>{ComponentTreeContainer(component.allChildren)}</div>
             }
         </article>
     )
