@@ -1,31 +1,38 @@
 import React from 'react';
-import { useDataProvider } from '../../context/DataProvider';
 import SingleComponent from './SingleComponent';
 
-
 export default function ComponentTreeContainer(props) {
-    const { data } = useDataProvider();
-    const { setPopup, setType } = props;
-    console.log('inside the tree container', data)
+    const { setPopup, setType, data, parent = '', level = 0 } = props;
+  
+console.log('items are', data, 'level', level)
+    if (!data || !data.length) return null;
 
     return (
         <div>
             this is the component tree container
-            { // not working, need to add a component in the middle to handle the recursion
-                data.length > 0 ?
+            { // not working with SingleComponent but with regular element
                 data.map(item => (
-                    <SingleComponent
-                    key={ item.name } 
-                    component={ item } 
-                    setPopup={ setPopup }
-                    setType={ setType }
-                />
+                    <SingleComponent 
+                        key={ item.name } 
+                        component={ item } 
+                        level={ level }
+                        setPopup={ setPopup }
+                        setType={ setType }
+                    >
+                        <ComponentTreeContainer 
+                        data={ item.children } 
+                        parent={ item.name } 
+                        level={level + 1}
+                        setPopup={ setPopup }
+                        setType={ setType }
+                        />
+                    </SingleComponent>
                 ))
-                
-                : null
             }
         </div>
     )
 }
 
 // https://stackoverflow.com/questions/54040222/recursively-render-react-component
+// https://kyleshevlin.com/recursive-react-components
+// https://betterprogramming.pub/recursive-rendering-with-react-components-10fa07c45456

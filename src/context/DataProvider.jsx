@@ -18,9 +18,10 @@ export default function DataProvider(props) {
             allChildren: []
         }
         // State is empty, this is the first component we add
-        if (data.length === 0) {    
-            setData(data.push(newComponent))
-            console.log(data)
+        if (data.length === 0) {   
+            setData(oldData => [...oldData, newComponent])
+            console.log('after adding to context data', data)
+            console.log('new component', newComponent)
         }
         // State already had children
         // We need to add the parent to this incoming child

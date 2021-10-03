@@ -7,7 +7,7 @@ import PopupForm from './PopupForm';
 
 export default function ComponentPopup(props) {
     const { setPopup, type } = props;
-    const { data, insertComponent } = useDataProvider();
+    const { insertComponent } = useDataProvider();
 
     function handleSubmit(event, newComponent) {
         event.preventDefault();
