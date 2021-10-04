@@ -5,7 +5,7 @@ export function findNodeInTree(nodeName, childToInsert, parentNode) {
     }
     else {
         for (let i = 0; i < parentNode.allChildren.length; i += 1) {
-            findNodeInTree(nodeName, childToInsert, parentNode.children[i])
+            findNodeInTree(nodeName, childToInsert, parentNode.allChildren[i])
         }
     }
     return parentNode;

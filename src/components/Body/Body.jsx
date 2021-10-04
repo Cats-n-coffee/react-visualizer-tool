@@ -8,7 +8,7 @@ import { useDataProvider } from '../../context/DataProvider';
 export default function Body(props) {
     const { data } = useDataProvider();
     const { setPopup, setType } = props;
-    
+    console.log('body rendering')
     return (
         <main css={ BodyStyles }>
             this is the body component
