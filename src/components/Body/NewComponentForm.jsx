@@ -5,7 +5,7 @@ import { useDataProvider } from '../../context/DataProvider';
 import { PopupStyles } from './styles/componentPopupStyles';
 import PopupForm from './PopupForm';
 
-export default function ComponentPopup(props) {
+export default function NewComponentForm(props) {
     const { setPopup, type } = props;
     const { insertComponent } = useDataProvider();
 

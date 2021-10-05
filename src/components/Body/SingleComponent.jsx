@@ -4,20 +4,11 @@ import React from 'react';
 import { SingleComponentStyled } from './styles/componentStyles';
 
 export default function SingleComponent(props) {
-    const { component, setPopup, setType } = props;
+    const { component, handleAddClick, handleEditClick } = props;
     const [showOptions, setShowOptions] = React.useState(false);
 
     console.log('single component', component)
-    function handleAddClick() {
-        setPopup(true);
-        setType("component-add-form");
-    }
-
-    function handleEditClick() {
-        setPopup(true);
-        setType("component-edit-form");
-    }
-
+    
     return (
         <article 
             css={ SingleComponentStyled }
