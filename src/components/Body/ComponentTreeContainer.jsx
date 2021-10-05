@@ -55,3 +55,4 @@ console.log('items are', data, 'level', level)
 // https://kyleshevlin.com/recursive-react-components
 // https://betterprogramming.pub/recursive-rendering-with-react-components-10fa07c45456
 // https://coderrocketfuel.com/article/recursion-in-react-render-comments-with-nested-children
+// https://medium.com/@swatisucharita94/recursive-rendering-in-react-42666102eae2

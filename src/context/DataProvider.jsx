@@ -8,7 +8,7 @@ export default function DataProvider(props) {
     const [data, setData] = React.useState([]);
 
     function insertComponent(component) {
-        const { componentName, componentProps, componentState, parent } = component;
+        let { componentName, componentProps, componentState, parent } = component;
 
         let newComponent = {
             name: componentName,
@@ -28,6 +28,12 @@ export default function DataProvider(props) {
         else {
             console.log('adding a child')
             let currentData = data[0]; // this is only valid for the root node being the parent
+            // if no parent is specified, we assign the first component to be the parent
+            if (!newComponent.parent) { 
+                console.log('we assigned a parent anyway!', currentData.name)
+                parent = currentData.name;
+                newComponent.parent = parent;
+            }
             console.log('currentData', currentData)
             // we need to loop throught the current tree to find the matching parent
             // once found, we need to push the new node to the array of children of that parent node
