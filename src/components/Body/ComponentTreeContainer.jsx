@@ -2,10 +2,9 @@
 import styled, { css } from 'styled-components/macro';
 import React from 'react';
 import SingleComponent from './SingleComponent';
-import { SingleComponentStyled } from './styles/componentStyles';
 
 export default function ComponentTreeContainer(props) {
-    const { handleAddClick, handleEditClick, data, parent = '', level = 0 } = props;
+    const { handleAddClick, handleEditClick, handleDelete, data, parent = '', level = 0 } = props;
   
 console.log('items are', data, 'level', level)
     if (!data || !data.length) return null;
@@ -19,13 +18,15 @@ console.log('items are', data, 'level', level)
                             component={item}
                             handleAddClick={ handleAddClick }
                             handleEditClick={ handleEditClick }
+                            handleDelete={ handleDelete }
                         />
                             <ComponentTreeContainer 
                                 data={ item.allChildren } 
                                 parent={ item.name } 
                                 level={level + 1}
                                 handleAddClick={ handleAddClick}
-                                handleEditClick={ handleEditClick }    
+                                handleEditClick={ handleEditClick } 
+                                handleDelete={ handleDelete }   
                             />    
                     </div>
                 ))

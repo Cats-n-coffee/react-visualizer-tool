@@ -4,7 +4,7 @@ import React from 'react';
 import { SingleComponentStyled } from './styles/componentStyles';
 
 export default function SingleComponent(props) {
-    const { component, handleAddClick, handleEditClick } = props;
+    const { component, handleAddClick, handleEditClick, handleDelete } = props;
     const [showOptions, setShowOptions] = React.useState(false);
 
     console.log('single component', component)
@@ -31,10 +31,10 @@ export default function SingleComponent(props) {
                 <div>
                     <button onClick={ () => handleAddClick() }>Add Component</button>
                     <button onClick={ () => handleEditClick() }>Edit Component</button>
+                    <button onClick={ () => handleDelete(component.name) }>Delete</button> 
                 </div>
                 : null
             }
-            
         </article>
     )
 }

@@ -1,10 +1,11 @@
 // eslint-disable-next-line
 import styles, { css } from 'styled-components/macro';
 import React from 'react';
-import ComponentTreeContainer from './ComponentTreeContainer';
-import { BodyStyles } from './styles/bodyStyles';
 import { useDataProvider } from '../../context/DataProvider';
+import ComponentTreeContainer from './ComponentTreeContainer';
 import NewComponentForm from './NewComponentForm';
+import ConfirmDelete from './ConfirmDelete';
+import { BodyStyles } from './styles/bodyStyles';
 
 export default function Body(props) {
     const { data } = useDataProvider();
@@ -22,6 +23,16 @@ export default function Body(props) {
         setPopupType("edit");
     }
 
+    function handleDelete() {
+        setPopup(true);
+        setPopupType('delete');
+    }
+
+    function confirmDelete() {
+        console.log('%cdeleting component', 'color: red');
+        setPopup(false)
+    }
+
     React.useEffect(() => {
         if (popup === false) {
             setPopupType('');
@@ -34,11 +45,17 @@ export default function Body(props) {
             <ComponentTreeContainer 
                 handleAddClick={ handleAddClick }
                 handleEditClick={ handleEditClick }
+                handleDelete={ handleDelete }
                 data={ data }
             />
             {
-                popup ?
+                popup && popupType === 'new' || popup && popupType === 'edit' ?
                 <NewComponentForm setPopup={ setPopup } type={ popupType } />
+                : null
+            }
+            {
+                popup && popupType === 'delete' ?
+                <ConfirmDelete confirmDelete={ confirmDelete } setPopup={ setPopup } />
                 : null
             }
         </main>

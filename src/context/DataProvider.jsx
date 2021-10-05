@@ -26,7 +26,6 @@ export default function DataProvider(props) {
         // We need to add the parent to this incoming child
         // We need to update the parent's children with this incoming child
         else {
-            console.log('adding a child')
             let currentData = data[0]; // this is only valid for the root node being the parent
             // if no parent is specified, we assign the first component to be the parent
             if (!newComponent.parent) { 
@@ -34,7 +33,7 @@ export default function DataProvider(props) {
                 parent = currentData.name;
                 newComponent.parent = parent;
             }
-            console.log('currentData', currentData)
+            console.log('adding a child', 'currentData', currentData)
             // we need to loop throught the current tree to find the matching parent
             // once found, we need to push the new node to the array of children of that parent node
             const newData = findNodeInTree(parent, newComponent, currentData);
@@ -50,7 +49,7 @@ export default function DataProvider(props) {
 
     }
 
-    const values = {data, setData, insertComponent};
+    const values = {data, insertComponent, updateComponent };
 
     return <DataContext.Provider value={values} {...props}/>
 }
