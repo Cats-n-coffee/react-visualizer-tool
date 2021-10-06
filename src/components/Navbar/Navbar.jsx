@@ -3,7 +3,7 @@ import ThemeToggle from './ThemeToggle';
 import NewProjectBtn from './NewProjectBtn';
 import FilterComponents from './FilterComponents';
 import FilterInfo from './FilterInfo';
-import NewComponentForm from '../Body/NewComponentForm';
+import ComponentForm from '../Body/ComponentForm';
 
 export default function Navbar(props) {
     const [popup, setPopup] = React.useState(false);
@@ -20,7 +20,7 @@ export default function Navbar(props) {
             </section>
             {
                 popup ?
-                <NewComponentForm setPopup={ setPopup } type="new"/>
+                <ComponentForm setPopup={ setPopup } type="new"/>
                 : null
             }
         </nav>

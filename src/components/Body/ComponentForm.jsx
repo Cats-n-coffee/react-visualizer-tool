@@ -6,9 +6,10 @@ import { PopupStyles } from './styles/componentPopupStyles';
 import PopupForm from './PopupForm';
 
 // This component is used in two places: Navbar and Body
-export default function NewComponentForm(props) {
-    const { setPopup, type } = props;
+export default function ComponentForm(props) {
+    const { setPopup, type, nameToEdit = "" } = props;
     const { insertComponent, updateComponent } = useDataProvider();
+    const [componentToEdit, setComponentToEdit] = React.useState(null);
 
     function handleSubmitNew(newComponent) {
         insertComponent(newComponent)
@@ -21,14 +22,21 @@ export default function NewComponentForm(props) {
         updateComponent()
     }
 
+    function findComponent() {
+        if (nameToEdit) {
+
+        }
+    }
+
     return (
         <div css={ PopupStyles }>
             <h2>Component Popup</h2>
             <button onClick={ () => setPopup(false) }>Close</button>
             <PopupForm 
-            handleSubmitNew={ handleSubmitNew } 
-            handleSubmitEdit={ handleSubmitEdit }
-            type={ type }
+                handleSubmitNew={ handleSubmitNew } 
+                handleSubmitEdit={ handleSubmitEdit }
+                componentToEdit={ componentToEdit }
+                type={ type }
             />
         </div>
     )

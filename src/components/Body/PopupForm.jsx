@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function PopupForm(props) {
-    const { handleSubmitNew, handleSubmitEdit, type } = props;
+    const { handleSubmitNew, handleSubmitEdit, type, componentToEdit = {} } = props;
     const [componentName, setComponentName] = React.useState('');
     const [componentProps, setComponentProps] = React.useState('');
     const [componentState, setComponentState] = React.useState('');

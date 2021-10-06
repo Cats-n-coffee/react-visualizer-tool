@@ -30,7 +30,7 @@ export default function SingleComponent(props) {
                 showOptions ?
                 <div>
                     <button onClick={ () => handleAddClick() }>Add Component</button>
-                    <button onClick={ () => handleEditClick() }>Edit Component</button>
+                    <button onClick={ () => handleEditClick(component.name) }>Edit Component</button>
                     <button onClick={ () => handleDelete(component.name) }>Delete</button> 
                 </div>
                 : null
