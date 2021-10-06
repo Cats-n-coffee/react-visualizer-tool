@@ -8,9 +8,10 @@ import ConfirmDelete from './ConfirmDelete';
 import { BodyStyles } from './styles/bodyStyles';
 
 export default function Body(props) {
-    const { data } = useDataProvider();
+    const { data, removeComponent } = useDataProvider();
     const [popup, setPopup] = React.useState(false);
     const [popupType, setPopupType] = React.useState('');
+    const [nameToDelete, setNameToDelete] = React.useState('');
     console.log('body rendering')
 
     function handleAddClick() {
@@ -23,14 +24,18 @@ export default function Body(props) {
         setPopupType("edit");
     }
 
-    function handleDelete() {
+    function handleDelete(name) {
         setPopup(true);
         setPopupType('delete');
+        console.log('%cpopup for ', 'color: red', name);
+        setNameToDelete(name);
     }
 
     function confirmDelete() {
         console.log('%cdeleting component', 'color: red');
-        setPopup(false)
+        setPopup(false);
+        removeComponent(nameToDelete);
+        setNameToDelete('');
     }
 
     React.useEffect(() => {
@@ -49,7 +54,7 @@ export default function Body(props) {
                 data={ data }
             />
             {
-                popup && popupType === 'new' || popup && popupType === 'edit' ?
+                (popup && popupType === 'new') || (popup && popupType === 'edit') ?
                 <NewComponentForm setPopup={ setPopup } type={ popupType } />
                 : null
             }

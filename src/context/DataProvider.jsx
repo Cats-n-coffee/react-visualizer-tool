@@ -1,5 +1,5 @@
 import React from 'react';
-import { findNodeInTree } from '../helpers/findNodeInTree';
+import { findNodeAndInsert, findNodeAndDelete } from '../helpers/findNodeInTree';
 
 const DataContext = React.createContext();
 DataContext.displayName = 'DataContext';
@@ -36,8 +36,8 @@ export default function DataProvider(props) {
             console.log('adding a child', 'currentData', currentData)
             // we need to loop throught the current tree to find the matching parent
             // once found, we need to push the new node to the array of children of that parent node
-            const newData = findNodeInTree(parent, newComponent, currentData);
-            setData([newData])
+            const newData = findNodeAndInsert(parent, newComponent, currentData);
+            setData(newData)
         }
     }
 
@@ -46,10 +46,14 @@ export default function DataProvider(props) {
     }
 
     function removeComponent(component) {
-
+        console.log('remove', component)
+        let currentData = data[0];
+        const afterDeleteData = findNodeAndDelete(component, currentData);
+        console.log('after delete', afterDeleteData)
+        setData(afterDeleteData)
     }
 
-    const values = {data, insertComponent, updateComponent };
+    const values = {data, insertComponent, updateComponent, removeComponent };
 
     return <DataContext.Provider value={values} {...props}/>
 }
