@@ -5,6 +5,7 @@ import { useDataProvider } from '../../context/DataProvider';
 import { findNodeAndRead } from '../../helpers/findNodeInTree';
 import PopupForm from './PopupForm';
 import { PopupStyles } from './styles/componentPopupStyles';
+import FormComponent from './FormComponent';
 
 // This component is used in two places: Navbar and Body
 export default function ComponentForm(props) {
@@ -37,7 +38,7 @@ export default function ComponentForm(props) {
         <div css={ PopupStyles }>
             <h2>Component Popup</h2>
             <button onClick={ () => setPopup(false) }>Close</button>
-            <PopupForm 
+            <FormComponent 
                 handleSubmitNew={ handleSubmitNew } 
                 handleSubmitEdit={ handleSubmitEdit }
                 componentToEdit={ componentToEdit }

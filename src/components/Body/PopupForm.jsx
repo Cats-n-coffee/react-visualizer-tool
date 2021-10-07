@@ -7,6 +7,7 @@ export default function PopupForm(props) {
     const [componentState, setComponentState] = React.useState('');
     const [componentParent, setComponentParent] = React.useState('');
 
+        
     if (type === 'edit') {
         console.log('%cpopup form received', 'color: purple', componentToEdit)
     }
