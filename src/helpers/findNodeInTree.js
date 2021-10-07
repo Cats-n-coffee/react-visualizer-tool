@@ -4,7 +4,7 @@ export function findNodeAndInsert(nodeName, childToInsert, parentNode) {
     }
     else {
         for (let i = 0; i < parentNode.allChildren.length; i += 1) {
-            findNodeAndInsert(nodeName, childToInsert, parentNode.allChildren[i])
+            findNodeAndInsert(nodeName, childToInsert, parentNode.allChildren[i]);
         }
     }
     return [parentNode];
@@ -22,11 +22,10 @@ export function findNodeAndDelete(nodeName, parentNode) {
         console.log('deleting some other node')
         for (let i = 0; i < parentNode.allChildren.length; i += 1) {
             if (parentNode.allChildren[i].name === nodeName) {
-                console.log('found the node, splicing it')
                 parentNode.allChildren.splice(i, 1);
             }
             else {
-                findNodeAndDelete(nodeName, parentNode.allChildren[i])
+                findNodeAndDelete(nodeName, parentNode.allChildren[i]);
             }
         }
     }
@@ -35,15 +34,33 @@ export function findNodeAndDelete(nodeName, parentNode) {
 
 export function findNodeAndRead(nodeName, parentNode) {
     console.log('%cnodeName', 'color: green', nodeName, 'parentNode', parentNode)
-    let currentNode;
     if (parentNode.name === nodeName) { 
-        currentNode = parentNode;
-        console.log('%cmatching node', 'color: green',  currentNode)
-        return currentNode;
+        return parentNode;
     }
     else {
         for (let i = 0; i < parentNode.allChildren.length; i += 1) {
-            return findNodeAndRead(nodeName, parentNode.allChildren[i])
+            return findNodeAndRead(nodeName, parentNode.allChildren[i]);
         }
     }
+}
+
+export function findNodeAndUpdate(nodeName, editedNode, parentNode) {
+    console.log('%cinside findandUpdate', 'color: purple', nodeName, 'edit', editedNode, 'parent', parentNode);
+    if (parentNode.name === nodeName) {
+        parentNode.name = editedNode.name;
+        parentNode.props = editedNode.props;
+        parentNode.state = editedNode.state;
+        
+        // we need to update the parent property of all the children in the array
+        for (let i = 0; i < parentNode.allChildren.length; i += 1) {
+            let child = parentNode.allChildren[i];
+            child.parent = editedNode.name;
+        }
+    }
+    else {
+        for (let i = 0; i < parentNode.allChildren.length; i += 1) {
+            findNodeAndUpdate(nodeName, editedNode, parentNode.allChildren[i]);
+        }
+    }
+    return [parentNode];
 }

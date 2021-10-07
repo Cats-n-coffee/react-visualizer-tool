@@ -19,9 +19,9 @@ export default function ComponentForm(props) {
         
     }
 
-    function handleSubmitEdit(editedComponent) {
+    function handleSubmitEdit(nameBeforeEdit, editedComponent) {
         console.log('edited component', editedComponent)
-        updateComponent()
+        updateComponent(nameBeforeEdit, editedComponent)
     }
 
     React.useEffect(() => {

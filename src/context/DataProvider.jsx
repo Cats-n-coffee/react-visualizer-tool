@@ -1,5 +1,9 @@
 import React from 'react';
-import { findNodeAndInsert, findNodeAndDelete } from '../helpers/findNodeInTree';
+import { 
+    findNodeAndInsert, 
+    findNodeAndDelete,
+    findNodeAndUpdate 
+} from '../helpers/findNodeInTree';
 
 const DataContext = React.createContext();
 DataContext.displayName = 'DataContext';
@@ -8,13 +12,13 @@ export default function DataProvider(props) {
     const [data, setData] = React.useState([]);
 
     function insertComponent(component) {
-        let { componentName, componentProps, componentState, parent } = component;
+        let { name, props, state, parent } = component;
 
         let newComponent = {
-            name: componentName,
+            name,
             parent: parent ? parent : null,
-            props: componentProps,
-            state: componentState,
+            props,
+            state,
             allChildren: []
         }
         // State is empty, this is the first component we add
@@ -41,8 +45,12 @@ export default function DataProvider(props) {
         }
     }
 
-    function updateComponent(component) {
+    function updateComponent(nodeName, component) {
         console.log('update')
+        let currentData = data[0];
+        const afterUpdate = findNodeAndUpdate(nodeName, component, currentData);
+        console.log('%cafterUpdate in provider', 'color: purple', afterUpdate)
+        setData(afterUpdate)
     }
 
     function removeComponent(component) {
