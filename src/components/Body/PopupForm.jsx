@@ -7,6 +7,14 @@ export default function PopupForm(props) {
     const [componentState, setComponentState] = React.useState('');
     const [componentParent, setComponentParent] = React.useState('');
 
+    if (type === 'edit') {
+        console.log('%cpopup form received', 'color: purple', componentToEdit)
+    }
+
+    // will use Formik to use:
+    // - form pre-fill for type === 'edit'
+    // - ability to add multiple props or state
+
     function submitForm(event) {
         event.preventDefault();
         if (type === 'new') {

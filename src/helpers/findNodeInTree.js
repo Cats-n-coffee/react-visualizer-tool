@@ -32,3 +32,18 @@ export function findNodeAndDelete(nodeName, parentNode) {
     }
     return [parentNode];
 }
+
+export function findNodeAndRead(nodeName, parentNode) {
+    console.log('%cnodeName', 'color: green', nodeName, 'parentNode', parentNode)
+    let currentNode;
+    if (parentNode.name === nodeName) { 
+        currentNode = parentNode;
+        console.log('%cmatching node', 'color: green',  currentNode)
+        return currentNode;
+    }
+    else {
+        for (let i = 0; i < parentNode.allChildren.length; i += 1) {
+            return findNodeAndRead(nodeName, parentNode.allChildren[i])
+        }
+    }
+}

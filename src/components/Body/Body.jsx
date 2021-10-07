@@ -57,13 +57,21 @@ export default function Body(props) {
                 data={ data }
             />
             {
-                (popup && popupType === 'new') || (popup && popupType === 'edit') ?
+                popup && popupType === 'new' ?
+                <ComponentForm 
+                    setPopup={ setPopup } 
+                    type={ popupType } 
+                />
+                : null
+            }
+            {
+                popup && popupType === 'edit' ?
                 <ComponentForm 
                     setPopup={ setPopup } 
                     type={ popupType } 
                     nameToEdit={ nameToEdit }
                 />
-                : null
+                : null 
             }
             {
                 popup && popupType === 'delete' ?
