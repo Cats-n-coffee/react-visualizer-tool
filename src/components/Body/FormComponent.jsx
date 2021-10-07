@@ -1,8 +1,9 @@
 import React from 'react';
 import { Formik, Field, Form, FieldArray, ErrorMessage } from 'formik';
+import { findNodeAndRead } from '../../helpers/findNodeInTree';
 
 export default function FormComponent(props) {
-    const { handleSubmitNew, handleSubmitEdit, type, componentToEdit = {} } = props;
+    const { handleSubmitNew, handleSubmitEdit, type, componentToEdit = {}, data } = props;
 
     const initialValues = {
         name: componentToEdit?.name || "",
@@ -17,47 +18,49 @@ export default function FormComponent(props) {
         console.log('%cpopup form received', 'color: purple', componentToEdit)
     }
 
-    // will use Formik to use:
-    // - form pre-fill for type === 'edit'
-    // - ability to add multiple props or state
-
-    // function submitForm(event) {
-    //     event.preventDefault();
-    //     if (type === 'new') {
-    //         const newData = { componentName, componentProps, componentState, parent: componentParent };
-    //         handleSubmitNew(newData)
-    //     }
-    //     else if (type === 'edit') {
-    //         const editData = {}
-    //         handleSubmitEdit(editData)
-    //     }
-    // }
+    function validateName(name) {
+        const checkName = findNodeAndRead(name, data[0]);
+        console.log('%cinside the validate', 'color: red', checkName)
+        if ((checkName === 'No match') || (checkName === 'No component yet')) {
+            console.log('%cAll good', 'color: red')
+            return null;
+        }
+        else {
+            console.log('%cComponent name already used', 'color: red', checkName)
+            return 'Component name already used';
+        }
+    }
 
     return (
         <section>
             <h2>{ type }</h2>
             <Formik
                 initialValues={ initialValues }
-                validateOnChange={ true }
+                validateOnBlur={ true }
+                validateOnChange={ false }
                 enableReinitialize={ true }
                 onSubmit={(data, { setSubmitting }) => {
                     console.log('submitting', data)
                     if (type === 'new') {
-                        //const newData = { name, props, state, parent };
                         handleSubmitNew(data)
                     }
                     else if (type === 'edit') {
-                        //const editData = {}
                         handleSubmitEdit(nameBeforeEdit, data)
                     }
                 }}
             >
                 {
-                    ({values, isSubmitting}) => (
+                    ({values, isSubmitting, errors}) => (
                         <Form>
                             <fieldset>
                                 <label htmlFor="component-name">Component Name</label>
-                                <Field type="text" id="component-name" name="name" value={values.name}/>
+                                <Field 
+                                type="text" 
+                                id="component-name" 
+                                name="name" 
+                                validate={ validateName }
+                                />
+                                {errors.name && <div>{ errors.name }</div>}
                             </fieldset>
                             <fieldset>
                                 <label htmlFor="component-props">Component Props</label>

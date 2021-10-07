@@ -34,8 +34,12 @@ export function findNodeAndDelete(nodeName, parentNode) {
 
 export function findNodeAndRead(nodeName, parentNode) {
     console.log('%cnodeName', 'color: green', nodeName, 'parentNode', parentNode)
+    if (!parentNode) return 'No component yet';
     if (parentNode.name === nodeName) { 
         return parentNode;
+    }
+    else if (parentNode.name !== nodeName && (!parentNode.allChildren || parentNode.allChildren.length === 0)) {
+        return "No match";
     }
     else {
         for (let i = 0; i < parentNode.allChildren.length; i += 1) {

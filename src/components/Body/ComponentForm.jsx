@@ -42,6 +42,7 @@ export default function ComponentForm(props) {
                 handleSubmitNew={ handleSubmitNew } 
                 handleSubmitEdit={ handleSubmitEdit }
                 componentToEdit={ componentToEdit }
+                data={ data }
                 type={ type }
             />
         </div>
