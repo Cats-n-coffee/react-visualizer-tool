@@ -15,21 +15,31 @@ export default function SingleComponent(props) {
             onMouseEnter={ () => setShowOptions(true) }
             onMouseLeave={ () => setShowOptions(false) }
         >
-            <h3>{component.name}</h3>
+            <h3>{ component.name }</h3>
             {
                 component.props ? [
                     <h4 key={component.name}>Props:</h4>,
                     component.props.map(prop => (
                         <div key={ prop.propName }>
-                            <span>{ prop.propName }</span>=<span>{ prop.propValue }</span>
+                            <span>{ prop.propName }</span>
+                            =
+                            <span>{ prop.propValue }</span>
                         </div>
                     ))
                 ] 
                 : null
             }
             {
-                component.state ?
-                <p>{component.state}</p>
+                component.state ? [
+                    <h4 key={ component.name }>State:</h4>,
+                    component.state.map(item => (
+                        <div key={ item.stateName }>
+                            <span>{ item.stateName }</span>
+                            Hook
+                            <span>{ item.stateHook }</span>
+                        </div>
+                    ))
+                ]
                 : null
             }
             {

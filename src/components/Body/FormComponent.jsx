@@ -96,8 +96,37 @@ export default function FormComponent(props) {
                                 </FieldArray>
                             </fieldset>
                             <fieldset>
-                                <label htmlFor="component-state">Component State</label>
-                                <Field type="text" id="component-state" name="state"/>
+                                <h3>State:</h3>
+                                <FieldArray name="state">
+                                {
+                                    (arrayHelpers) => (
+                                        <>
+                                            {
+                                                values.state.map((item, index) => {
+                                                return (
+                                                    <div key={`state.${index}`}>
+                                                        <div>
+                                                            <label htmlFor={`state.${index}`}>State Name</label>
+                                                            <Field type="text" id={`state.${index}`} name={`state.${index}.stateName`}/>
+                                                        </div>
+                                                        <div>
+                                                            <label htmlFor={`state.${index}`}>State Value</label>
+                                                            <Field type="text" id={`state.${index}`} name={`state.${index}.stateHook`}/> 
+                                                        </div>
+                                                    </div>
+                                                )
+                                                })
+                                            }
+                                            <button
+                                                type="button"
+                                                onClick={() => arrayHelpers.push({stateName: "", stateHook: ""})}
+                                            >
+                                                Add state
+                                            </button>
+                                        </>
+                                    )
+                                }
+                                </FieldArray>
                             </fieldset>
                             <fieldset>
                                 <label htmlFor="component-parent">Component Parent</label>
