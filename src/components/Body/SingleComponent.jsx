@@ -15,9 +15,9 @@ export default function SingleComponent(props) {
             onMouseEnter={ () => setShowOptions(true) }
             onMouseLeave={ () => setShowOptions(false) }
         >
-            <h3>{ component.name }</h3>
+            <h3 style={{ color: 'green' }}>{ component.name }</h3>
             {
-                component.props ? [
+                component.props && component.props.length > 0 ? [
                     <h4 key={component.name}>Props:</h4>,
                     component.props.map(prop => (
                         <div key={ prop.propName }>
@@ -30,7 +30,7 @@ export default function SingleComponent(props) {
                 : null
             }
             {
-                component.state ? [
+                component.state && component.props.length > 0 ? [
                     <h4 key={ component.name }>State:</h4>,
                     component.state.map(item => (
                         <div key={ item.stateName }>

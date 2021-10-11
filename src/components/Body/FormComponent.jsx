@@ -19,6 +19,7 @@ export default function FormComponent(props) {
     }
 
     function validateName(name) {
+        if (type === 'edit' && name === initialValues.name) return;
         const checkName = findNodeAndRead(name, data[0]);
         console.log('%cinside the validate', 'color: red', checkName)
         if ((checkName === 'No match') || (checkName === 'No component yet')) {
