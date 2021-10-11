@@ -17,8 +17,14 @@ export default function SingleComponent(props) {
         >
             <h3>{component.name}</h3>
             {
-                component.props ? 
-                <p>{component.props}</p>
+                component.props ? [
+                    <h4 key={component.name}>Props:</h4>,
+                    component.props.map(prop => (
+                        <div key={ prop.propName }>
+                            <span>{ prop.propName }</span>=<span>{ prop.propValue }</span>
+                        </div>
+                    ))
+                ] 
                 : null
             }
             {
@@ -38,3 +44,5 @@ export default function SingleComponent(props) {
         </article>
     )
 }
+
+// https://stackoverflow.com/questions/60312340/render-multiple-components-with-a-single-ternary-operator
