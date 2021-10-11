@@ -7,8 +7,8 @@ export default function FormComponent(props) {
 
     const initialValues = {
         name: componentToEdit?.name || "",
-        props: componentToEdit?.props || "",
-        state: componentToEdit?.state || "",
+        props: componentToEdit?.props || [],
+        state: componentToEdit?.state || [],
         parent: componentToEdit?.parent || ""
     }
 
@@ -63,8 +63,37 @@ export default function FormComponent(props) {
                                 {errors.name && <div>{ errors.name }</div>}
                             </fieldset>
                             <fieldset>
-                                <label htmlFor="component-props">Component Props</label>
-                                <Field type="text" id="component-props" name="props"/>
+                                <h3>Component Props:</h3>
+                                <FieldArray name="props">
+                                {
+                                    (arrayHelpers) => (
+                                        <>
+                                            {
+                                                values.props.map((prop, index) => {
+                                                return (
+                                                    <div key={`props.${index}`}>
+                                                        <div>
+                                                            <label htmlFor={`props.${index}`}>Prop Name</label>
+                                                            <Field type="text" id={`props.${index}`} name={`props.${index}.propName`}/>
+                                                        </div>
+                                                        <div>
+                                                            <label htmlFor={`props.${index}`}>Prop Value</label>
+                                                            <Field type="text" id={`props.${index}`} name={`props.${index}.propValue`}/> 
+                                                        </div>
+                                                    </div>
+                                                )
+                                                })
+                                            }
+                                            <button
+                                                type="button"
+                                                onClick={() => arrayHelpers.push({propName: "", propValue: ""})}
+                                            >
+                                                Add prop
+                                            </button>
+                                        </>
+                                    )
+                                }
+                                </FieldArray>
                             </fieldset>
                             <fieldset>
                                 <label htmlFor="component-state">Component State</label>
