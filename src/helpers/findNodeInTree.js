@@ -68,3 +68,23 @@ export function findNodeAndUpdate(nodeName, editedNode, parentNode) {
     }
     return [parentNode];
 }
+
+
+export function nodeNameList(parent, nameList) {
+    console.log('%cparent inside the helper', 'color: orange', parent, 'name list array', nameList)
+    if (!parent) return null;
+    else if (parent.parent === null && parent.allChildren.length === 0) {
+        console.log('%conly the root', 'color: orange')
+        nameList.push(parent.name);
+    }
+    else if (parent.allChildren && parent.allChildren.length > 0) {
+        nameList.push(parent.name); // not the way to do it. big bug
+        for (let i = 0; i < parent.allChildren.length; i += 1) {
+            console.log('%clooking through the children ', 'color: orange', parent.allChildren[i].name)
+            nameList.push(parent.allChildren[i].name);
+            console.log('name list is before recursion ', nameList)
+            nodeNameList(parent.allChildren[i], nameList)
+        }
+    }
+    return nameList;
+}

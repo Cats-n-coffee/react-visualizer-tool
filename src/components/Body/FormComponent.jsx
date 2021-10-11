@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik, Field, Form, FieldArray, ErrorMessage } from 'formik';
-import { findNodeAndRead } from '../../helpers/findNodeInTree';
+import { findNodeAndRead, nodeNameList } from '../../helpers/findNodeInTree';
 
 export default function FormComponent(props) {
     const { handleSubmitNew, handleSubmitEdit, type, componentToEdit = {}, data } = props;
@@ -17,6 +17,10 @@ export default function FormComponent(props) {
     if (type === 'edit') {
         console.log('%cpopup form received', 'color: purple', componentToEdit)
     }
+    //const nameList = []
+    const nodeList = nodeNameList(data[0], [])
+
+    console.log('%cnodeNameList is ', 'color: orange', nodeList, 'current data ', data[0])
 
     function validateName(name) {
         if (type === 'edit' && name === initialValues.name) return;
@@ -74,13 +78,19 @@ export default function FormComponent(props) {
                                                 return (
                                                     <div key={`props.${index}`}>
                                                         <div>
-                                                            <label htmlFor={`props.${index}`}>Prop Name</label>
-                                                            <Field type="text" id={`props.${index}`} name={`props.${index}.propName`}/>
+                                                            <label htmlFor={`props.${index}.propName`}>Prop Name</label>
+                                                            <Field type="text" id={`props.${index}.propName`} name={`props.${index}.propName`}/>
                                                         </div>
                                                         <div>
-                                                            <label htmlFor={`props.${index}`}>Prop Value</label>
-                                                            <Field type="text" id={`props.${index}`} name={`props.${index}.propValue`}/> 
+                                                            <label htmlFor={`props.${index}.propValue`}>Prop Value</label>
+                                                            <Field type="text" id={`props.${index}.propValue`} name={`props.${index}.propValue`}/> 
                                                         </div>
+                                                        <button
+                                                            onClick={() => arrayHelpers.remove(index)}
+                                                            type="button"
+                                                        >
+                                                            Delete
+                                                        </button>
                                                     </div>
                                                 )
                                                 })
@@ -107,13 +117,19 @@ export default function FormComponent(props) {
                                                 return (
                                                     <div key={`state.${index}`}>
                                                         <div>
-                                                            <label htmlFor={`state.${index}`}>State Name</label>
-                                                            <Field type="text" id={`state.${index}`} name={`state.${index}.stateName`}/>
+                                                            <label htmlFor={`state.${index}.stateName`}>State Name</label>
+                                                            <Field type="text" id={`state.${index}.stateName`} name={`state.${index}.stateName`}/>
                                                         </div>
                                                         <div>
-                                                            <label htmlFor={`state.${index}`}>State Value</label>
-                                                            <Field type="text" id={`state.${index}`} name={`state.${index}.stateHook`}/> 
+                                                            <label htmlFor={`state.${index}.stateValue`}>State Value</label>
+                                                            <Field type="text" id={`state.${index}.stateValue`} name={`state.${index}.stateHook`}/> 
                                                         </div>
+                                                        <button
+                                                            onClick={() => arrayHelpers.remove(index)}
+                                                            type="button"
+                                                        >
+                                                            Delete
+                                                        </button>
                                                     </div>
                                                 )
                                                 })
