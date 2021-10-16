@@ -1,6 +1,6 @@
-import { css } from 'styled-components';
+import { css } from "styled-components";
 
 export const BodyStyles = css`
-    background: lightblue;
-    min-height: 100vh;
+  background: var(--background);
+  min-height: 100vh;
 `;
