@@ -16,7 +16,9 @@ export default function Navbar(props) {
       <h1>React Visualizer</h1>
       <div className="center navbar-sections">
         <section aria-label="add buttons" className="center navbar-add-buttons">
-          <button onClick={() => setPopup(true)}>Add Component</button>
+          <button className="btn" onClick={() => setPopup(true)}>
+            Add Component
+          </button>
           <NewProjectBtn />
           <SelectProject />
         </section>

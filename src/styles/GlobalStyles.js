@@ -76,4 +76,12 @@ export const GlobalStyles = createGlobalStyle`
         align-items: center;
         justify-content: center;
     }
+
+    .btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: .5em;
+        border-radius: 8px;
+    }
 `;

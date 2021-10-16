@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function NewProjectBtn(props) {
-    return (
-        <button>New Project</button>
-    )
+  return <button className="btn">New Project</button>;
 }

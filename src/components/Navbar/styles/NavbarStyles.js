@@ -6,6 +6,12 @@ export const NavbarStyled = css`
   align-items: center;
   background: var(--sidebar);
   padding: 1em;
+  z-index: 3;
+  box-shadow: 3px 0px 10px var(--shadow);
+
+  h1 {
+    color: var(--sidebar-button);
+  }
 
   .navbar-sections {
     width: 100%;
