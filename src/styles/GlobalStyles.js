@@ -83,16 +83,18 @@ export const GlobalStyles = createGlobalStyle`
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 1em;
+        padding: .7em 1em;
         border-radius: 8px;
+        font-family: var(--font-mukta);
+        border: none;
+        cursor: pointer;
     }
 
     .navbar-btn {
         background: var(--sidebar-button);
         color: white;
         font-weight: 400;
-        font-size: 1rem;
-        border: none;
+        font-size: 1rem; 
         box-shadow: 1px 1px 2px var(--shadow);
     }
 `;

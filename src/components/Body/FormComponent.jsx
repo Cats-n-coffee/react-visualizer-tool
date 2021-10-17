@@ -1,6 +1,9 @@
+// eslint-disable-next-line
+import styled, { css } from "styled-components/macro";
 import React from "react";
 import { Formik, Field, Form, FieldArray, ErrorMessage } from "formik";
 import { findNodeAndRead, nodeNameList } from "../../helpers/findNodeInTree";
+import { FormStyled } from "./styles/FormStyles";
 
 export default function FormComponent(props) {
   const {
@@ -47,8 +50,8 @@ export default function FormComponent(props) {
   }
 
   return (
-    <section>
-      <h2>{type}</h2>
+    <section css={FormStyled} className="center">
+      <h2>{type} Component</h2>
       <Formik
         initialValues={initialValues}
         validateOnBlur={true}
@@ -196,9 +199,13 @@ export default function FormComponent(props) {
               )}
             </fieldset>
             {type === "new" ? (
-              <button type="submit">Add to Tree</button>
+              <button type="submit" className="btn btn-form submit-btn">
+                Add to Tree
+              </button>
             ) : (
-              <button type="submit">Edit Tree</button>
+              <button type="submit" className="btn btn-form submit-btn">
+                Edit Tree
+              </button>
             )}
           </Form>
         )}
