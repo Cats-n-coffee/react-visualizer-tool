@@ -13,18 +13,22 @@ export default function Navbar(props) {
   const [popup, setPopup] = React.useState(false);
   return (
     <nav css={NavbarStyled}>
-      <h1>React Visualizer</h1>
+      <h1>
+        React
+        <br />
+        Visualizer
+      </h1>
       <div className="center navbar-sections">
         <section aria-label="add buttons" className="center navbar-add-buttons">
-          <button className="btn" onClick={() => setPopup(true)}>
+          <button className="btn navbar-btn" onClick={() => setPopup(true)}>
             Add Component
           </button>
           <NewProjectBtn />
           <SelectProject />
         </section>
         <section aria-label="filters" className="center navbar-filters">
-          <FilterComponents />
           <FilterInfo />
+          <FilterComponents />
         </section>
         {popup ? <ComponentForm setPopup={setPopup} type="new" /> : null}
         <ThemeToggle />

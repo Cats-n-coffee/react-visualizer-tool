@@ -16,6 +16,7 @@ export const GlobalStyles = createGlobalStyle`
     html, body {
         min-height: 100vh;
         font-family: var(--font-mukta);
+        font-size: 16px;
     }
 
     body[data-theme="light"] {
@@ -78,10 +79,20 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     .btn {
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: .5em;
+        padding: 1em;
         border-radius: 8px;
+    }
+
+    .navbar-btn {
+        background: var(--sidebar-button);
+        color: white;
+        font-weight: 400;
+        font-size: 1rem;
+        border: none;
+        box-shadow: 1px 1px 2px var(--shadow);
     }
 `;
