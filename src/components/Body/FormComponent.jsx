@@ -79,7 +79,7 @@ export default function FormComponent(props) {
               {errors.name && <div>{errors.name}</div>}
             </fieldset>
             <fieldset>
-              <h3>Component Props:</h3>
+              <h3>Props:</h3>
               <FieldArray name="props">
                 {(arrayHelpers) => (
                   <>

@@ -10,7 +10,7 @@ export function findNodeAndInsert(nodeName, childToInsert, parentNode) {
 }
 
 export function findNodeAndDelete(nodeName, parentNode) {
-  // removing the root node will remove all the children, so we start over
+  // removing the root node will remove all the allChildren, so we start over
   console.log("delete nodeName", nodeName, "parentNode", parentNode);
   if (parentNode.parent === null && parentNode.name === nodeName) {
     console.log("parent node deleting");
@@ -62,7 +62,7 @@ export function findNodeAndUpdate(nodeName, editedNode, parentNode) {
     parentNode.props = editedNode.props;
     parentNode.state = editedNode.state;
 
-    // we need to update the parent property of all the children in the array
+    // we need to update the parent property of all the allChildren in the array
     for (let i = 0; i < parentNode.allChildren.length; i += 1) {
       let child = parentNode.allChildren[i];
       child.parent = editedNode.name;
@@ -81,7 +81,7 @@ export function nodeNameList(parent, nameList) {
     // handles the case where we only have a root node
     nameList.push(parent.name);
   } else if (parent.allChildren && parent.allChildren.length > 0) {
-    // handles the case where the root node has children
+    // handles the case where the root node has allChildren
     if (nameList.indexOf(parent.name) === -1) {
       nameList.push(parent.name);
     }
