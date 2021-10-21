@@ -2,20 +2,15 @@
 import styled, { css } from "styled-components/macro";
 import React from "react";
 import SortableTree from "@nosferatu500/react-sortable-tree";
-import SingleComponent from "./SingleComponent";
+import DetailsPopup from "./DetailsPopup";
 
 export default function ComponentTreeContainer(props) {
-  const {
-    handleAddClick,
-    handleEditClick,
-    handleDelete,
-    data,
-    parent = "",
-    level = 0,
-  } = props;
+  const { handleAddClick, handleEditClick, handleDelete, data } = props;
   const [currentData, setCurrentData] = React.useState(data);
+  const [showDetails, setShowDetails] = React.useState(false);
+  const [selectedNode, setSelectedNode] = React.useState(null);
 
-  console.log("items are", data, "level", level);
+  //console.log("items are", data, "level", level);
   React.useEffect(() => {
     if (!data || !data.length) return [];
     if (data) {
@@ -24,28 +19,67 @@ export default function ComponentTreeContainer(props) {
   }, [data]);
 
   return (
-    <div style={{ height: 500 }}>
+    <div style={{ height: 500, position: "relative" }}>
+      {showDetails ? (
+        <DetailsPopup
+          node={selectedNode}
+          setSelectedNode={setSelectedNode}
+          setShowDetails={setShowDetails}
+        />
+      ) : null}
       <SortableTree
         treeData={currentData}
         onChange={(currentData) => setCurrentData(currentData)}
         generateNodeProps={(row) => {
-          console.log("inside the generate", row);
+          //console.log("inside the generate", row);
           return {
             title: row.node.title,
             buttons: [
               <button
                 type="button"
-                className="btn btn-outline-success"
+                className="btn"
                 style={{
                   verticalAlign: "middle",
+                  padding: ".5em",
                 }}
-                onMouseOver={() => console.log(row)}
+                onMouseOver={() => {
+                  setShowDetails(true);
+                  setSelectedNode(row);
+                }}
+                onMouseOut={() => {
+                  setShowDetails(false);
+                  setSelectedNode("");
+                }}
               >
                 ℹ
               </button>,
+              <button
+                type="button"
+                className="btn"
+                style={{
+                  verticalAlign: "middle",
+                  padding: ".5em",
+                }}
+                onClick={() => handleEditClick(row.node.title)}
+              >
+                Edit
+              </button>,
+              <button
+                type="button"
+                className="btn"
+                style={{
+                  verticalAlign: "middle",
+                  padding: ".5em",
+                }}
+                onClick={() => handleDelete(row.node.title)}
+              >
+                Delete
+              </button>,
             ],
+            className: "node",
           };
         }}
+        canDrag={false}
       />
     </div>
   );
