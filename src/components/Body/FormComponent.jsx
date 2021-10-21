@@ -15,13 +15,13 @@ export default function FormComponent(props) {
   } = props;
 
   const initialValues = {
-    name: componentToEdit?.name || "",
+    title: componentToEdit?.title || "",
     props: componentToEdit?.props || [],
     state: componentToEdit?.state || [],
     parent: componentToEdit?.parent || "",
   };
 
-  const nameBeforeEdit = componentToEdit?.name || "";
+  const nameBeforeEdit = componentToEdit?.title || "";
 
   if (type === "edit") {
     console.log("%cpopup form received", "color: purple", componentToEdit);
@@ -37,7 +37,7 @@ export default function FormComponent(props) {
   );
 
   function validateName(name) {
-    if (type === "edit" && name === initialValues.name) return;
+    if (type === "edit" && name === initialValues.title) return;
     const checkName = findNodeAndRead(name, data[0]);
     console.log("%cinside the validate", "color: red", checkName);
     if (checkName === "No match" || checkName === "No component yet") {
@@ -73,10 +73,10 @@ export default function FormComponent(props) {
               <Field
                 type="text"
                 id="component-name"
-                name="name"
+                name="title"
                 validate={validateName}
               />
-              {errors.name && <div>{errors.name}</div>}
+              {errors.title && <div>{errors.title}</div>}
             </fieldset>
             <fieldset>
               <h3>Props:</h3>

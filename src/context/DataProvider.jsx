@@ -12,14 +12,14 @@ export default function DataProvider(props) {
   const [data, setData] = React.useState([]);
 
   function insertComponent(component) {
-    let { name, props, state, parent } = component;
+    let { title, props, state, parent } = component;
 
     let newComponent = {
-      name,
+      title,
       parent: parent ? parent : null,
       props,
       state,
-      allChildren: [],
+      children: [],
     };
     // State is empty, this is the first component we add
     if (data.length === 0) {
@@ -33,8 +33,8 @@ export default function DataProvider(props) {
       let currentData = data[0]; // this is only valid for the root node being the parent
       // if no parent is specified, we assign the first component to be the parent
       if (!newComponent.parent) {
-        console.log("we assigned a parent anyway!", currentData.name);
-        parent = currentData.name;
+        console.log("we assigned a parent anyway!", currentData.title);
+        parent = currentData.title;
         newComponent.parent = parent;
       }
       console.log("adding a child", "currentData", currentData);

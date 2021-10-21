@@ -14,10 +14,10 @@ export default function SingleComponent(props) {
       onMouseEnter={() => setShowOptions(true)}
       onMouseLeave={() => setShowOptions(false)}
     >
-      <h3 style={{ color: "green" }}>{component.name}</h3>
+      <h3 style={{ color: "green" }}>{component.title}</h3>
       {component.props && component.props.length > 0
         ? [
-            <h4 key={component.name}>Props:</h4>,
+            <h4 key={component.title}>Props:</h4>,
             component.props.map((prop) => (
               <div key={prop.propName}>
                 <span>{prop.propName}</span>=<span>{prop.propValue}</span>
@@ -27,7 +27,7 @@ export default function SingleComponent(props) {
         : null}
       {component.state && component.props.length > 0
         ? [
-            <h4 key={component.name}>State:</h4>,
+            <h4 key={component.title}>State:</h4>,
             component.state.map((item) => (
               <div key={item.stateName}>
                 <span>{item.stateName}</span>
@@ -40,10 +40,10 @@ export default function SingleComponent(props) {
       {showOptions ? (
         <div>
           <button onClick={() => handleAddClick()}>Add Component</button>
-          <button onClick={() => handleEditClick(component.name)}>
+          <button onClick={() => handleEditClick(component.title)}>
             Edit Component
           </button>
-          <button onClick={() => handleDelete(component.name)}>Delete</button>
+          <button onClick={() => handleDelete(component.title)}>Delete</button>
         </div>
       ) : null}
     </article>
