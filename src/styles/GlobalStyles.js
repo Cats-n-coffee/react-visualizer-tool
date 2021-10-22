@@ -97,17 +97,4 @@ export const GlobalStyles = createGlobalStyle`
         font-size: 1rem; 
         box-shadow: 1px 1px 2px var(--shadow);
     }
-
-    .rst__rowContents {
-        background-color: #40B57A;
-        position: relative;
-    }
-
-    .rst__rowTitle {
-        color: var(--text-primary);
-    }
-
-    .rst__lineHalfHorizontalRight::before, .rst__lineFullVertical::after, .rst__lineHalfVerticalTop::after, .rst__lineHalfVerticalBottom::after {
-        background-color: var(--text-primary);
-    }
 `;

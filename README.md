@@ -46,3 +46,11 @@ This action is performed from the component node. In `ComponentForm`, we use the
 ### Delete
 
 This action is performed from the component node. The handler is directly in `Body` to open the `ConfirmDelete` component. The `confirmDelete` handler inside the `Body` uses the methods imported from the `useData` hook and modify context.
+
+## References
+
+https://stackoverflow.com/questions/54040222/recursively-render-react-component<br>
+https://kyleshevlin.com/recursive-react-components<br>
+https://betterprogramming.pub/recursive-rendering-with-react-components-10fa07c45456<br>
+https://coderrocketfuel.com/article/recursion-in-react-render-comments-with-nested-children<br>
+https://medium.com/@swatisucharita94/recursive-rendering-in-react-42666102eae2<br>
