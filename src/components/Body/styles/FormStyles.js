@@ -10,11 +10,37 @@ export const FormStyled = css`
       border: none;
       display: flex;
       justify-content: space-between;
-      gap: 1em;
-      padding: 0.8em 0;
+      gap: 0.5em;
+      padding: 0.5em 0;
       label {
       }
       input {
+        max-width: 150px;
+      }
+    }
+
+    .fieldset__list {
+      flex-direction: column;
+      gap: 0;
+
+      .fieldset__row {
+        display: flex;
+
+        .fieldset__row__single {
+          flex-shrink: 1;
+        }
+      }
+
+      .btn__form__delete {
+        padding: 0.5em;
+        background: var(--form-button);
+        width: auto;
+      }
+
+      .btn__form__list {
+        padding: 0.5em;
+        background: var(--form-button);
+        max-width: 50px;
       }
     }
   }

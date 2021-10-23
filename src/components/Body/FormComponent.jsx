@@ -78,15 +78,15 @@ export default function FormComponent(props) {
               />
               {errors.title && <div>{errors.title}</div>}
             </fieldset>
-            <fieldset>
+            <fieldset className="fieldset__list">
               <h3>Props:</h3>
               <FieldArray name="props">
                 {(arrayHelpers) => (
                   <>
                     {values.props.map((prop, index) => {
                       return (
-                        <div key={`props.${index}`}>
-                          <div>
+                        <div key={`props.${index}`} className="fieldset__row">
+                          <div className="fieldset__row__single">
                             <label htmlFor={`props.${index}.propName`}>
                               Prop Name
                             </label>
@@ -96,7 +96,7 @@ export default function FormComponent(props) {
                               name={`props.${index}.propName`}
                             />
                           </div>
-                          <div>
+                          <div className="fieldset__row__single">
                             <label htmlFor={`props.${index}.propValue`}>
                               Prop Value
                             </label>
@@ -107,15 +107,17 @@ export default function FormComponent(props) {
                             />
                           </div>
                           <button
+                            className="btn btn__form__delete"
                             onClick={() => arrayHelpers.remove(index)}
                             type="button"
                           >
-                            Delete
+                            D
                           </button>
                         </div>
                       );
                     })}
                     <button
+                      className="btn btn__form__list"
                       type="button"
                       onClick={() =>
                         arrayHelpers.push({ propName: "", propValue: "" })
@@ -127,15 +129,15 @@ export default function FormComponent(props) {
                 )}
               </FieldArray>
             </fieldset>
-            <fieldset>
+            <fieldset className="fieldset__list">
               <h3>State:</h3>
               <FieldArray name="state">
                 {(arrayHelpers) => (
                   <>
                     {values.state.map((item, index) => {
                       return (
-                        <div key={`state.${index}`}>
-                          <div>
+                        <div key={`state.${index}`} className="fieldset__row">
+                          <div className="fieldset__row__single">
                             <label htmlFor={`state.${index}.stateName`}>
                               State Name
                             </label>
@@ -145,7 +147,7 @@ export default function FormComponent(props) {
                               name={`state.${index}.stateName`}
                             />
                           </div>
-                          <div>
+                          <div className="fieldset__row__single">
                             <label htmlFor={`state.${index}.stateValue`}>
                               State Value
                             </label>
@@ -156,15 +158,17 @@ export default function FormComponent(props) {
                             />
                           </div>
                           <button
+                            className="btn btn__form__delete"
                             onClick={() => arrayHelpers.remove(index)}
                             type="button"
                           >
-                            Delete
+                            D
                           </button>
                         </div>
                       );
                     })}
                     <button
+                      className="btn btn__form__list"
                       type="button"
                       onClick={() =>
                         arrayHelpers.push({ stateName: "", stateHook: "" })

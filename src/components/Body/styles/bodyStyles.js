@@ -28,7 +28,6 @@ export const BodyStyles = css`
 
   .node__details {
     background: var(--sidebar);
-    margin-top: 0.5em;
     position: absolute;
     box-shadow: 1px 1px 2px var(--shadow), -1px -1px 2px var(--shadow);
     padding: 1em;
@@ -45,11 +44,18 @@ export const BodyStyles = css`
       color: var(--text-primary);
     }
 
-    .btn__details {
+    .details__items {
+      color: var(--text-primary);
     }
   }
 
   .btn__node {
     padding: 0 0.5em;
+    background: var(--component-border);
+    color: white;
+  }
+
+  .btn__node:hover {
+    background: #297850;
   }
 `;
