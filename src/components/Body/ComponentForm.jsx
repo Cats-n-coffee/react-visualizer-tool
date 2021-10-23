@@ -5,6 +5,7 @@ import { useDataProvider } from "../../context/DataProvider";
 import { findNodeAndRead } from "../../helpers/findNodeInTree";
 import { PopupStyles } from "./styles/componentPopupStyles";
 import FormComponent from "./FormComponent";
+import { CrossIcon } from "../Icons";
 
 // This component is used in two places: Navbar and Body
 export default function ComponentForm(props) {
@@ -33,8 +34,8 @@ export default function ComponentForm(props) {
   return (
     <div css={PopupStyles}>
       <div className="form-wrapper">
-        <button className="btn btn-form" onClick={() => setPopup(false)}>
-          Close
+        <button className="btn icon-close" onClick={() => setPopup(false)}>
+          <CrossIcon />
         </button>
         <FormComponent
           handleSubmitNew={handleSubmitNew}

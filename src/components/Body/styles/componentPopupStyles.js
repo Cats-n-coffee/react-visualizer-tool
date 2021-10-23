@@ -8,23 +8,40 @@ export const PopupStyles = css`
   bottom: 0;
   height: 100vh;
   width: 100vw;
-  background-color: pink;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.4);
+  background: var(--transparent-background);
 
   .form-wrapper {
-    max-width: 500px;
-    background: var(--form-background);
+    max-width: 400px;
+    width: 100%;
+    background: var(--background);
     padding: 2em;
     border-radius: 8px;
   }
 
-  .btn-form {
+  .icon-close {
+    background: none;
     width: auto;
-    background: var(--form-button);
-    color: var(--text-secondary);
+    padding: 0;
+    margin-left: auto;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+        fill: var(--text-primary);
+      }
+    }
+  }
+
+  .icon-close:hover {
+    svg {
+      path {
+        fill: var(--form-button);
+      }
+    }
   }
 `;

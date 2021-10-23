@@ -4,6 +4,7 @@ import React from "react";
 import { Formik, Field, Form, FieldArray, ErrorMessage } from "formik";
 import { findNodeAndRead, nodeNameList } from "../../helpers/findNodeInTree";
 import { FormStyled } from "./styles/FormStyles";
+import { DeleteIcon, AddIcon } from "../Icons";
 
 export default function FormComponent(props) {
   const {
@@ -69,17 +70,20 @@ export default function FormComponent(props) {
         {({ values, isSubmitting, errors }) => (
           <Form>
             <fieldset>
-              <label htmlFor="component-name">Component Name</label>
+              <label htmlFor="component-name" className="label-title">
+                Name
+              </label>
               <Field
                 type="text"
                 id="component-name"
                 name="title"
+                className="input-boxes"
                 validate={validateName}
               />
               {errors.title && <div>{errors.title}</div>}
             </fieldset>
             <fieldset className="fieldset__list">
-              <h3>Props:</h3>
+              <h3 className="label-title">Props</h3>
               <FieldArray name="props">
                 {(arrayHelpers) => (
                   <>
@@ -94,6 +98,7 @@ export default function FormComponent(props) {
                               type="text"
                               id={`props.${index}.propName`}
                               name={`props.${index}.propName`}
+                              className="input-boxes"
                             />
                           </div>
                           <div className="fieldset__row__single">
@@ -104,33 +109,34 @@ export default function FormComponent(props) {
                               type="text"
                               id={`props.${index}.propValue`}
                               name={`props.${index}.propValue`}
+                              className="input-boxes"
                             />
                           </div>
                           <button
-                            className="btn btn__form__delete"
+                            className="btn btn__form__delete btn__icon"
                             onClick={() => arrayHelpers.remove(index)}
                             type="button"
                           >
-                            D
+                            <DeleteIcon />
                           </button>
                         </div>
                       );
                     })}
                     <button
-                      className="btn btn__form__list"
+                      className="btn btn__form__list btn__icon"
                       type="button"
                       onClick={() =>
                         arrayHelpers.push({ propName: "", propValue: "" })
                       }
                     >
-                      Add prop
+                      <AddIcon />
                     </button>
                   </>
                 )}
               </FieldArray>
             </fieldset>
             <fieldset className="fieldset__list">
-              <h3>State:</h3>
+              <h3 className="label-title">State</h3>
               <FieldArray name="state">
                 {(arrayHelpers) => (
                   <>
@@ -145,6 +151,7 @@ export default function FormComponent(props) {
                               type="text"
                               id={`state.${index}.stateName`}
                               name={`state.${index}.stateName`}
+                              className="input-boxes"
                             />
                           </div>
                           <div className="fieldset__row__single">
@@ -155,35 +162,43 @@ export default function FormComponent(props) {
                               type="text"
                               id={`state.${index}.stateValue`}
                               name={`state.${index}.stateHook`}
+                              className="input-boxes"
                             />
                           </div>
                           <button
-                            className="btn btn__form__delete"
+                            className="btn btn__form__delete btn__icon"
                             onClick={() => arrayHelpers.remove(index)}
                             type="button"
                           >
-                            D
+                            <DeleteIcon />
                           </button>
                         </div>
                       );
                     })}
                     <button
-                      className="btn btn__form__list"
+                      className="btn btn__form__list btn__icon"
                       type="button"
                       onClick={() =>
                         arrayHelpers.push({ stateName: "", stateHook: "" })
                       }
                     >
-                      Add state
+                      <AddIcon />
                     </button>
                   </>
                 )}
               </FieldArray>
             </fieldset>
             <fieldset>
-              <label htmlFor="component-parent">Component Parent</label>
+              <label htmlFor="component-parent" className="label-title">
+                Parent
+              </label>
               {type === "new" ? (
-                <Field as="select" id="component-parent" name="parent">
+                <Field
+                  as="select"
+                  id="component-parent"
+                  name="parent"
+                  className="input-boxes"
+                >
                   <option>Select a Parent</option>
                   {nodeList && nodeList.length
                     ? nodeList.map((node, index) => (

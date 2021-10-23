@@ -40,6 +40,7 @@ export const GlobalStyles = createGlobalStyle`
         --component-border: #40B57A;
         --component-line: '';
         --shadow: #8D8D91;
+        --transparent-background: rgba(0, 0, 0, 0.4);
     }
 
     body[data-theme="dark"] {
@@ -63,6 +64,7 @@ export const GlobalStyles = createGlobalStyle`
         --component-border: #40B57A;
         --component-line: '';
         --shadow: #8D8D91;
+        --transparent-background: rgba(255, 255, 255, 0.4);
     }
 
     #container {
@@ -97,4 +99,6 @@ export const GlobalStyles = createGlobalStyle`
         font-size: 1rem; 
         box-shadow: 1px 1px 2px var(--shadow);
     }
+
+    
 `;
