@@ -7,6 +7,7 @@ export const ThemeToggleStyled = css`
   border-radius: 30px;
   border: 1px solid var(--shadow);
   position: relative;
+  cursor: pointer;
 
   &::before {
     content: "";

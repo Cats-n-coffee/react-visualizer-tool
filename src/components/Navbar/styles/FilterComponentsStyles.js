@@ -13,5 +13,6 @@ export const FilterComponentsStyled = css`
     color: var(--text-primary);
     font-family: var(--font-mukta);
     font-size: 0.9rem;
+    cursor: pointer;
   }
 `;

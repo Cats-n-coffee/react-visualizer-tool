@@ -26,12 +26,17 @@ export const FormStyled = css`
       color: var(--text-primary);
       font-family: var(--font-mukta);
       font-size: 0.9rem;
+      cursor: pointer;
     }
 
     .submit-btn {
       margin-left: auto;
       margin-right: auto;
       margin-top: 1em;
+    }
+
+    .submit-btn:hover {
+      background: var(--button-hover-blue);
     }
 
     .btn-form {

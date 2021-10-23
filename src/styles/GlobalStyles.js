@@ -41,6 +41,7 @@ export const GlobalStyles = createGlobalStyle`
         --component-line: '';
         --shadow: #8D8D91;
         --transparent-background: rgba(0, 0, 0, 0.4);
+        --button-hover-blue: #015275;
     }
 
     body[data-theme="dark"] {
@@ -65,6 +66,7 @@ export const GlobalStyles = createGlobalStyle`
         --component-line: '';
         --shadow: #8D8D91;
         --transparent-background: rgba(255, 255, 255, 0.4);
+        --button-hover-blue: #015275;
     }
 
     #container {
@@ -100,5 +102,7 @@ export const GlobalStyles = createGlobalStyle`
         box-shadow: 1px 1px 2px var(--shadow);
     }
 
-    
+    .navbar-btn:hover {
+        background: var(--button-hover-blue);
+    }
 `;
