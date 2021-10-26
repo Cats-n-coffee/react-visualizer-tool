@@ -27,9 +27,9 @@ export const BodyStyles = css`
   }
 
   .node__details {
-    background: var(--sidebar);
+    background: var(--button-hover-green);
     position: absolute;
-    box-shadow: 1px 1px 2px var(--shadow), -1px -1px 2px var(--shadow);
+    border: 1px solid var(--component-background);
     padding: 1em;
     border-radius: 5px;
     width: 200px;
@@ -37,15 +37,15 @@ export const BodyStyles = css`
 
     h3 {
       text-align: center;
-      color: var(--text-primary);
+      color: white;
     }
 
     h4 {
-      color: var(--text-primary);
+      color: white;
     }
 
     .details__items {
-      color: var(--text-primary);
+      color: white;
     }
   }
 
@@ -56,6 +56,6 @@ export const BodyStyles = css`
   }
 
   .btn__node:hover {
-    background: #297850;
+    background: var(--button-hover-green);
   }
 `;

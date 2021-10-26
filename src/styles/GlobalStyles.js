@@ -33,7 +33,7 @@ export const GlobalStyles = createGlobalStyle`
         --form-input: #8D8D91;
         --form-title: '';
         --form-button: #2D99C8;
-        --cancel-background: white;
+        --cancel-background: #fcd2d2;
         --cancel-title: '';
         --cancel-button: #ED5C5A;
         --component-background: #C6E986;
@@ -42,6 +42,7 @@ export const GlobalStyles = createGlobalStyle`
         --shadow: #8D8D91;
         --transparent-background: rgba(0, 0, 0, 0.4);
         --button-hover-blue: #015275;
+        --button-hover-green: #297850;
     }
 
     body[data-theme="dark"] {
@@ -58,7 +59,7 @@ export const GlobalStyles = createGlobalStyle`
         --form-input: #8D8D91;
         --form-title: '';
         --form-button: #2D99C8;
-        --cancel-background: white;
+        --cancel-background: #fcd2d2;
         --cancel-title: '';
         --cancel-button: #ED5C5A;
         --component-background: #C6E986;
@@ -67,6 +68,7 @@ export const GlobalStyles = createGlobalStyle`
         --shadow: #8D8D91;
         --transparent-background: rgba(255, 255, 255, 0.4);
         --button-hover-blue: #015275;
+        --button-hover-green: #297850;
     }
 
     #container {
