@@ -27,7 +27,6 @@ export default function Navbar(props) {
           <SelectProject />
         </section>
         <section aria-label="filters" className="center navbar-filters">
-          <FilterInfo />
           <FilterComponents />
         </section>
         {popup ? <ComponentForm setPopup={setPopup} type="new" /> : null}
