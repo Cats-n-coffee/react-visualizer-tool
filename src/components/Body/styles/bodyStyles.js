@@ -26,13 +26,18 @@ export const BodyStyles = css`
     margin-right: 10px;
   }
 
+  .rst__rowToolbar {
+    align-items: center;
+  }
+
   .node__details {
     background: var(--button-hover-green);
     position: absolute;
     border: 1px solid var(--component-background);
     padding: 1em;
     border-radius: 5px;
-    width: 200px;
+    width: auto;
+    min-width: 200px;
     z-index: 1;
 
     h3 {
@@ -40,8 +45,14 @@ export const BodyStyles = css`
       color: white;
     }
 
-    h4 {
+    .details__content {
+      border-top: 1px solid var(--component-background);
+      padding-bottom: 0.4em;
       color: white;
+      h4 {
+        font-size: 1.2rem;
+        color: var(--component-background);
+      }
     }
 
     .details__items {
@@ -49,13 +60,25 @@ export const BodyStyles = css`
     }
   }
 
-  .btn__node {
-    padding: 0 0.5em;
-    background: var(--component-border);
-    color: white;
+  .btn__node__icon {
+    background: none;
+    width: auto;
+    padding-right: 0;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+        fill: black;
+      }
+    }
   }
 
-  .btn__node:hover {
-    background: var(--button-hover-green);
+  .btn__node__icon:hover {
+    svg {
+      path {
+        fill: var(--component-border);
+      }
+    }
   }
 `;

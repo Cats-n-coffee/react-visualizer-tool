@@ -6,6 +6,17 @@ import ComponentTreeContainer from "./ComponentTreeContainer";
 import ComponentForm from "./ComponentForm";
 import ConfirmDelete from "./ConfirmDelete";
 import { BodyStyles } from "./styles/bodyStyles";
+import { ErrorBoundary } from "react-error-boundary";
+
+function ErrorFallback({ error, resetErrorBoundary }) {
+  return (
+    <div role="alert">
+      There was an error:
+      <pre style={{ whiteSpace: "normal" }}>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>Try Again</button>
+    </div>
+  );
+}
 
 export default function Body(props) {
   const { data, removeComponent } = useDataProvider();
@@ -49,12 +60,15 @@ export default function Body(props) {
 
   return (
     <main css={BodyStyles}>
-      <ComponentTreeContainer
-        handleAddClick={handleAddClick}
-        handleEditClick={handleEditClick}
-        handleDelete={handleDelete}
-        data={data}
-      />
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <ComponentTreeContainer
+          handleAddClick={handleAddClick}
+          handleEditClick={handleEditClick}
+          handleDelete={handleDelete}
+          data={data}
+        />
+      </ErrorBoundary>
+
       {popup && popupType === "new" ? (
         <ComponentForm setPopup={setPopup} type={popupType} />
       ) : null}

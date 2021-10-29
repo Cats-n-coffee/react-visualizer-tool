@@ -33,7 +33,7 @@ export const GlobalStyles = createGlobalStyle`
         --form-input: #8D8D91;
         --form-title: '';
         --form-button: #2D99C8;
-        --cancel-background: #fcd2d2;
+        --cancel-background: #fce3e3;
         --cancel-title: '';
         --cancel-button: #ED5C5A;
         --component-background: #C6E986;
@@ -59,7 +59,7 @@ export const GlobalStyles = createGlobalStyle`
         --form-input: #8D8D91;
         --form-title: '';
         --form-button: #2D99C8;
-        --cancel-background: #fcd2d2;
+        --cancel-background: #fce3e3;
         --cancel-title: '';
         --cancel-button: #ED5C5A;
         --component-background: #C6E986;

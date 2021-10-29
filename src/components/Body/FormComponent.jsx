@@ -13,6 +13,7 @@ export default function FormComponent(props) {
     type,
     componentToEdit = {},
     data,
+    setPopup,
   } = props;
 
   const initialValues = {
@@ -65,6 +66,7 @@ export default function FormComponent(props) {
           } else if (type === "edit") {
             handleSubmitEdit(nameBeforeEdit, data);
           }
+          setPopup(false);
         }}
       >
         {({ values, isSubmitting, errors }) => (

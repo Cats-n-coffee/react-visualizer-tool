@@ -3,6 +3,7 @@ import styled, { css } from "styled-components/macro";
 import React from "react";
 import SortableTree from "@nosferatu500/react-sortable-tree";
 import DetailsPopup from "./DetailsPopup";
+import { EditIcon, DeleteIcon, InfoIcon } from "../Icons";
 
 export default function ComponentTreeContainer(props) {
   const { handleEditClick, handleDelete, data } = props;
@@ -31,7 +32,7 @@ export default function ComponentTreeContainer(props) {
             buttons: [
               <button
                 type="button"
-                className="btn btn__node"
+                className="btn btn__node__icon"
                 onMouseOver={() => {
                   setShowDetails(true);
                   setSelectedNode(row);
@@ -41,21 +42,21 @@ export default function ComponentTreeContainer(props) {
                   setSelectedNode("");
                 }}
               >
-                ℹ
+                <InfoIcon />
               </button>,
               <button
                 type="button"
-                className="btn btn__node"
+                className="btn btn__node__icon"
                 onClick={() => handleEditClick(row.node.title)}
               >
-                Edit
+                <EditIcon />
               </button>,
               <button
                 type="button"
-                className="btn btn__node"
+                className="btn btn__node__icon"
                 onClick={() => handleDelete(row.node.title)}
               >
-                Delete
+                <DeleteIcon />
               </button>,
             ],
             className: "node",

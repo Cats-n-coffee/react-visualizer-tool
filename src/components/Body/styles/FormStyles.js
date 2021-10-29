@@ -2,6 +2,7 @@ import { css } from "styled-components";
 
 export const FormStyled = css`
   width: 100%;
+  max-height: 600px;
 
   h2 {
     text-transform: capitalize;
@@ -11,6 +12,8 @@ export const FormStyled = css`
 
   form {
     width: 100%;
+    height: 100%;
+    overflow-y: auto;
 
     .label-title {
       color: var(--text-primary);
@@ -57,7 +60,6 @@ export const FormStyled = css`
 
     .fieldset__list {
       display: grid;
-      grid-template-rows: repeat(2, auto);
       grid-template-columns: repeat(2, auto);
       align-items: center;
 
@@ -67,7 +69,6 @@ export const FormStyled = css`
       }
 
       .fieldset__row {
-        grid-row: 2;
         grid-column: 1/ -1;
         display: flex;
         align-items: flex-end;

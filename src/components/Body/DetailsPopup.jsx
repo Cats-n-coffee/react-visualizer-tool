@@ -31,25 +31,25 @@ export default function DetailsPopup(props) {
       }}
     >
       <h3>{node.node.title}</h3>
-      <div>
-        <h4>Props</h4>
+      <div className="details__content">
+        <h4>Props:</h4>
         {node.node.props?.length > 0
           ? node.node.props.map((prop) => (
               <div key={prop.propName} className="details__items">
                 <span>{prop.propName}</span>= <span>{prop.propValue}</span>
               </div>
             ))
-          : null}
+          : "None"}
       </div>
-      <div>
-        <h4>State</h4>
+      <div className="details__content">
+        <h4>State:</h4>
         {node.node.state?.length > 0
           ? node.node.state.map((item) => (
               <div key={item.stateName} className="details__items">
                 <span>{item.stateName}</span>:<span>{item.stateHook}</span>
               </div>
             ))
-          : null}
+          : "None"}
       </div>
     </section>
   );

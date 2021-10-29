@@ -4,7 +4,6 @@ import React from "react";
 import ThemeToggle from "./ThemeToggle";
 import NewProjectBtn from "./NewProjectBtn";
 import FilterComponents from "./FilterComponents";
-import FilterInfo from "./FilterInfo";
 import ComponentForm from "../Body/ComponentForm";
 import SelectProject from "./SelectProject";
 import { NavbarStyled } from "./styles/NavbarStyles";

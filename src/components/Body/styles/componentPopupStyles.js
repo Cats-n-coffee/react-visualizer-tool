@@ -13,10 +13,10 @@ export const PopupStyles = css`
   align-items: center;
   justify-content: center;
   background: var(--transparent-background);
-  z-index: 2;
+  z-index: 4;
 
   .form-wrapper {
-    max-width: 400px;
+    max-width: 430px;
     width: 100%;
     background: var(--background);
     padding: 2em;

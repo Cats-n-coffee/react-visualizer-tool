@@ -43,6 +43,7 @@ export default function ComponentForm(props) {
           componentToEdit={componentToEdit}
           data={data}
           type={type}
+          setPopup={setPopup}
         />
       </div>
     </div>
